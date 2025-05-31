@@ -104,8 +104,8 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
-  uint8_t lastButtonState = 1;
-  uint8_t currentSequence = 0;
+  uint8_t estado_siguiente_boton = 0;
+  uint8_t secuencia = 0;
   int retardo=200;
   /* USER CODE END 2 */
 
@@ -114,18 +114,19 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  uint8_t buttonState = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
+	  //detección del boton
+	  uint8_t estado_boton = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
 
   // Detectar flanco de bajada (si usás pull-up)
-  if (lastButtonState == 1 && buttonState == 0)
+  if ( estado_siguiente_boton == 0 &&  estado_boton == 1)
   {
-    currentSequence = !currentSequence;
+   secuencia = !secuencia;
     HAL_Delay(20); // Anti-rebote simple
   }
 
-  lastButtonState = buttonState;
+  estado_siguiente_boton = estado_boton;
 
-  if (currentSequence == 0)
+  if (secuencia == 0)
   {
     // Secuencia A
     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
@@ -401,7 +402,7 @@ void Error_Handler(void)
 #ifdef  USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
+  *         where the assert_param error has occurred.		
   * @param  file: pointer to the source file name
   * @param  line: assert_param error line source number
   * @retval None
