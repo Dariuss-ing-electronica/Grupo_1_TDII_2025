@@ -60,8 +60,8 @@ all: main-build
 main-build: App_1_3_Grupo_\ 1_\ 2025.elf secondary-outputs
 
 # Tool invocations
-App_1_3_Grupo_\ 1_\ 2025.elf App_1_3_Grupo_\ 1_\ 2025.map: $(OBJS) $(USER_OBJS) C:\Users\KING\STM32CubeIDE\workspace_1.18.1\App_1_3_Grupo_\ 1_\ 2025\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "App_1_3_Grupo_ 1_ 2025.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\KING\STM32CubeIDE\workspace_1.18.1\App_1_3_Grupo_ 1_ 2025\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="App_1_3_Grupo_ 1_ 2025.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+App_1_3_Grupo_\ 1_\ 2025.elf App_1_3_Grupo_\ 1_\ 2025.map: $(OBJS) $(USER_OBJS) C:\Users\ASIU\ ADRIUG\OneDrive\ -\ frt.utn.edu.ar\ING.\ ELECTRÓNICA\4°\ AÑO\ ING.ELECTRONICA\TED\ II\Grupo_1_TDII_2025\AFP_1_TDII_2025\App_1_3_Grupo_\ 1_\ 2025\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "App_1_3_Grupo_ 1_ 2025.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\ASIU ADRIUG\OneDrive - frt.utn.edu.ar\ING. ELECTRÓNICA\4° AÑO ING.ELECTRONICA\TED II\Grupo_1_TDII_2025\AFP_1_TDII_2025\App_1_3_Grupo_ 1_ 2025\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="App_1_3_Grupo_ 1_ 2025.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
