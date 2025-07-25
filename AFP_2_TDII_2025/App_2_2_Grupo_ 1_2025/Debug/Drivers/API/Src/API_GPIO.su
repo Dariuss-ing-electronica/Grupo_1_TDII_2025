@@ -1,3 +1,0 @@
-../Drivers/API/Src/API_GPIO.c:16:7:MX_GPIO_Init	56	static
-../Drivers/API/Src/API_GPIO.c:73:7:sec1	16	static
-../Drivers/API/Src/API_GPIO.c:89:7:sec2	16	static

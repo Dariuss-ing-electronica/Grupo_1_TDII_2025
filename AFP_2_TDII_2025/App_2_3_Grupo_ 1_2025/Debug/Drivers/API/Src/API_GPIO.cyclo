@@ -1,5 +1,0 @@
-../Drivers/API/Src/API_GPIO.c:24:6:MX_GPIO_Init	1
-../Drivers/API/Src/API_GPIO.c:83:6:writeLedOn_GPIO	1
-../Drivers/API/Src/API_GPIO.c:92:6:writeLedOff_GPIO	1
-../Drivers/API/Src/API_GPIO.c:99:6:toggleLed_GPIO	1
-../Drivers/API/Src/API_GPIO.c:108:16:readButton_GPIO	1
