@@ -1,0 +1,5 @@
+../Drivers/API/Src/API_GPIO.c:16:7:MX_GPIO_Init	1
+../Drivers/API/Src/API_GPIO.c:74:7:Secuencia1	1
+../Drivers/API/Src/API_GPIO.c:88:7:Secuencia2	1
+../Drivers/API/Src/API_GPIO.c:105:7:Secuencia3	1
+../Drivers/API/Src/API_GPIO.c:119:7:Secuencia4	1
