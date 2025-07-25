@@ -104,59 +104,30 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
-  uint8_t estado_siguiente_boton = 0;
-  uint8_t secuencia = 0;
-  int retardo=200;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  int retardo=200;
+
   while (1)
   {
-    /* USER CODE END WHILE */
-	  //detección del boton
-	  uint8_t estado_boton = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
-
-  // Detectar flanco de bajada (si usás pull-up)
-  if ( estado_siguiente_boton == 0 &&  estado_boton == 1)
-  {
-   secuencia = !secuencia;
-    HAL_Delay(20); // Anti-rebote simple
-  }
-
-  estado_siguiente_boton = estado_boton;
-
-  if (secuencia == 0)
-  {
-    // Secuencia A
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
-    HAL_Delay(retardo);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
-
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
-    HAL_Delay(retardo);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
-
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
-    HAL_Delay(retardo);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
-  }
-  else
-  {
-    // Secuencia B
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
-    HAL_Delay(retardo);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
-
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
-    HAL_Delay(retardo);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
-
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
-    HAL_Delay(retardo);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
-  }
-    /* USER CODE BEGIN 3 */
+	  //SECUENCIA LED VERDE
+	      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+	      HAL_Delay(retardo);
+	      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+	      HAL_Delay(retardo);
+	      //SECUENCIA LED AZUL
+	      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
+	      HAL_Delay(retardo);
+	      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
+	      HAL_Delay(retardo);
+	      //SECUENCIA LED
+	      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+	      HAL_Delay(retardo);
+	      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+	      HAL_Delay(retardo);
   }
   /* USER CODE END 3 */
 }
@@ -402,7 +373,7 @@ void Error_Handler(void)
 #ifdef  USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.		
+  *         where the assert_param error has occurred.
   * @param  file: pointer to the source file name
   * @param  line: assert_param error line source number
   * @retval None
