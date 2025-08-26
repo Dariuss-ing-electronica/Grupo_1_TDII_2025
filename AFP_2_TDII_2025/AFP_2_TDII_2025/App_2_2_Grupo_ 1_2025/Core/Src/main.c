@@ -19,7 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "API_GPIO.h"
-
+#define retardo 200
 
 #include "string.h"
 
@@ -30,9 +30,13 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+uint16_t LEDS[3] = {LD1_Pin, LD2_Pin, LD3_Pin}; /*Creo vector de LEDs de usuario*/
 /* USER CODE END PTD */
+//Declaración de funciones
 
+void sec1(uint16_t VECTOR_Led[3]);
+
+void sec2(uint16_t VECTOR_Led[3]);
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
@@ -116,7 +120,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  uint8_t buttonState = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
+	  uint8_t buttonState = readButton_GPIO();
 
   // Detectar flanco de bajada (si usás pull-up)
   if (lastButtonState == 1 && buttonState == 0)
@@ -130,12 +134,12 @@ int main(void)
   if (currentSequence == 0)
   {
     // Secuencia A
-	   sec1();
+	   sec1(lEDS);
   }
   else
   {
     // Secuencia B
-	   sec2();
+	   sec2(LEDS);
   }
     /* USER CODE BEGIN 3 */
   }
@@ -307,7 +311,56 @@ void SystemClock_Config(void)
 
 
 /* USER CODE BEGIN 4 */
+//funciones de secuencia
 
+  void sec1(uint16_t VECTOR_Led[3])
+  {
+      // Secuencia A
+
+     /* HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+      HAL_Delay(retardo);
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
+      HAL_Delay(retardo);
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
+
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
+      HAL_Delay(retardo);
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
+      */
+ 	 for (uint8_t i = 0; i < 3; i++){
+
+ 	 writeLedOn_GPIO( VECTOR_Led[i]);
+ 	 HAL_Delay(retardo);
+ 	 writeLedOff_GPIO(VECTOR_Led[i]);
+
+ 	 }
+  }
+
+  void sec2(uint16_t VECTOR_Led[3])
+  {
+      // Secuencia B
+
+ 	  /*int retardo=200;
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
+      HAL_Delay(retardo);
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
+
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
+      HAL_Delay(retardo);
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
+
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+      HAL_Delay(retardo);
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+      */
+	  for (int8_t i = 2; i>=0; i--){
+      writeLedOn_GPIO( VECTOR_Led[i]);
+	  HAL_Delay(retardo);
+	  writeLedOff_GPIO(VECTOR_Led[i]);
+	  }
+  }
 /* USER CODE END 4 */
 
 /**
