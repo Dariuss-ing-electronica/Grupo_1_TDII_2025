@@ -7,7 +7,8 @@
 
 #include "main.h"
 #include "API_GPIO.h"
-//led_t LDx:
+led_t LDx;
+
 /**
   * @brief GPIO Initialization Function
   * @param None
@@ -59,46 +60,47 @@
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(USB_OverCurrent_GPIO_Port, &GPIO_InitStruct);
-
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
   /* USER CODE END MX_GPIO_Init_2 */
 }
 
+ //****************************************************************
+
+ //Manejo de los estados de los leds
 
 
-
- //funciones
-
- void sec1(void)
+ // Funciónes para encender led
+ void writeLedOn_GPIO(led_t LDx)
  {
-     // Secuencia A
-	  int retardo=200;
-     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
-     HAL_Delay(retardo);
-     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
 
-     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
-     HAL_Delay(retardo);
-     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
+ 	HAL_GPIO_WritePin(GPIOB, LDx, GPIO_PIN_SET);
 
-     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
-     HAL_Delay(retardo);
-     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
  }
- void sec2(void)
+
+ //Función para apagar led
+
+ void writeLedOff_GPIO(led_t LDx)
  {
-     // Secuencia B
-	  int retardo=200;
-     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
-     HAL_Delay(retardo);
-     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
+ 	HAL_GPIO_WritePin(GPIOB, LDx, GPIO_PIN_RESET);
 
-     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
-     HAL_Delay(retardo);
-     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
+ 	}
 
-     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
-     HAL_Delay(retardo);
-     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+ //funcion que se comporta como un inversor del estado del led
+ void toggleLed_GPIO(led_t LDx)
+ {
+
+ 	HAL_GPIO_TogglePin(GPIOB, LDx);
+
+
+ }
+ //funcion para la lectura de botones
+
+ buttonStatus_t readButton_GPIO(void)
+
+ {
+
+ return HAL_GPIO_ReadPin(GPIOC, USER_Btn_Pin);
+
+
  }
