@@ -1,8 +1,12 @@
 /*
- * API_GPIO.c
+ * API_GPIO.h
  *
  *  Created on: Jul 24, 2025
- *      Author: GRUPO 1
+ *      Author: GRUPO 1_2025:
+ *              LUCERO DARIO
+ *              PISTAN ULISES
+ *              LEGUIZAMON MARCELO
+ *              RIVERO MARTIN
  */
 
 #include "main.h"
