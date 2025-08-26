@@ -134,7 +134,7 @@ int main(void)
   if (currentSequence == 0)
   {
     // Secuencia A
-	   sec1(lEDS);
+	   sec1(LEDS);
   }
   else
   {
