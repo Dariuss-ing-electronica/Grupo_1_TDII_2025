@@ -1,12 +1,17 @@
 /*
- * API_GPIO.c
+ * API_GPIO.h
  *
- *  Created on: Jul 25, 2025
- *      Author: GRUPO 1
+ *  Created on: Jul 24, 2025
+ *      Author: GRUPO 1_2025:
+ *              LUCERO DARIO
+ *              PISTAN ULISES
+ *              LEGUIZAMON MARCELO
+ *              RIVERO MARTIN
  */
 
 #include "main.h"
 #include "API_GPIO.h"
+led_t LDx;
 
  /**
   * @brief GPIO Initialization Function
@@ -69,64 +74,44 @@
 
 /* USER CODE END 4 */
 
- //FUNCIONES DE SECUENCIA
 
- void Secuencia1(void)
+ //****************************************************************
 
- {int retardo1=100 ;
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
- HAL_Delay(retardo1);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
- HAL_Delay(retardo1);
+ //Manejo de los estados de los leds
+
+
+ // Funciónes para encender led
+ void writeLedOn_GPIO(led_t LDx)
+ {
+
+ 	HAL_GPIO_WritePin(GPIOB, LDx, GPIO_PIN_SET);
 
  }
 
- void Secuencia2(void)
+ //Función para apagar led
 
- {int retardo2=250 ;
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
- HAL_Delay(retardo2);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
- HAL_Delay(retardo2);
+ void writeLedOff_GPIO(led_t LDx)
+ {
+ 	HAL_GPIO_WritePin(GPIOB, LDx, GPIO_PIN_RESET);
 
+ 	}
 
+ //funcion que se comporta como un inversor del estado del led
+ void toggleLed_GPIO(led_t LDx)
+ {
 
-
- }
-
- void Secuencia3(void)
- {  int retardo3=500 ;
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
- HAL_Delay(retardo3);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
- HAL_Delay(retardo3);
+ 	HAL_GPIO_TogglePin(GPIOB, LDx);
 
 
  }
+ //funcion para la lectura de botones
 
- void Secuencia4(void){
+ buttonStatus_t readButton_GPIO(void)
 
- int retardo4=1000 ;
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
- HAL_Delay(retardo4);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
- HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
- HAL_Delay(retardo4);
+ {
+
+ return HAL_GPIO_ReadPin(GPIOC, USER_Btn_Pin);
+
 
  }
 
