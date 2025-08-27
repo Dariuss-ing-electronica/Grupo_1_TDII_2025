@@ -21,6 +21,7 @@
 #include "string.h"
 #include "API_GPIO.h"
 /* Private includes ----------------------------------------------------------*/
+uint16_t LEDS[3] = {LD1_Pin, LD2_Pin, LD3_Pin}; /*Creo vector de LEDs de usuario*/
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
@@ -29,8 +30,15 @@
 /* USER CODE BEGIN PTD */
 
 /* USER CODE END PTD */
-
+ void Secuencia1(uint16_t VECTOR_Led[3]);
+ void Secuencia2(uint16_t VECTOR_Led[3]);
+ void Secuencia3(uint16_t VECTOR_Led[3]);
+ void Secuencia4(uint16_t VECTOR_Led[3]);
 /* Private define ------------------------------------------------------------*/
+#define retardo1 100
+#define retardo2 250
+#define retardo3 500
+#define retardo4 1000
 /* USER CODE BEGIN PD */
 
 /* USER CODE END PD */
@@ -123,28 +131,28 @@ int main(void)
           switch (contador)
                {
       case 1:
-          Secuencia1();
+          Secuencia1(LEDS);
                      break;
 
       case 2:
-           Secuencia2();
+           Secuencia2(LEDS);
                      break;
 
       case 3:
-    	  Secuencia3();
+    	  Secuencia3(LEDS);
                      break;
       case 4:
-    	  Secuencia4();
+    	  Secuencia4(LEDS);
          break;
 
       default:
-    	  Secuencia1();
+    	  Secuencia1(LEDS);
         	  break;
 
       }
 
       // Lectura del botón
-      estado_actual_boton= HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
+      estado_actual_boton= readButton_GPIO();
 
       // Detectar flanco de bajada presionado)
       if ( estado_actual_boton==1 && estado_siguiente_boton==0)
@@ -328,6 +336,64 @@ int main(void)
 
 }
 
+//*****************************************************************************
+//FUNCIONES DE SECUENCIA
+
+  void Secuencia1(uint16_t VECTOR_Led[3])
+
+  {
+  
+  toggleLed_GPIO(VECTOR_Led[0]);
+  toggleLed_GPIO(VECTOR_Led[1]);
+  toggleLed_GPIO(VECTOR_Led[2]);
+  HAL_Delay(retardo1);
+  toggleLed_GPIO(VECTOR_Led[0]);
+  toggleLed_GPIO(VECTOR_Led[1]);
+  toggleLed_GPIO(VECTOR_Led[2]);
+  HAL_Delay(retardo1);
+  }
+
+  void Secuencia2(uint16_t VECTOR_Led[3])
+
+  {
+
+
+    toggleLed_GPIO(VECTOR_Led[0]);
+    toggleLed_GPIO(VECTOR_Led[1]);
+    toggleLed_GPIO(VECTOR_Led[2]);
+    HAL_Delay(retardo2);
+    toggleLed_GPIO(VECTOR_Led[0]);
+    toggleLed_GPIO(VECTOR_Led[2]);
+    toggleLed_GPIO(VECTOR_Led[1]);
+    HAL_Delay(retardo2);
+
+  }
+
+  void Secuencia3(uint16_t VECTOR_Led[3])
+  {
+    toggleLed_GPIO(VECTOR_Led[0]);
+    toggleLed_GPIO(VECTOR_Led[1]);
+    toggleLed_GPIO(VECTOR_Led[2]);
+    HAL_Delay(retardo3);
+    toggleLed_GPIO(VECTOR_Led[0]);
+    toggleLed_GPIO(VECTOR_Led[1]);
+    toggleLed_GPIO(VECTOR_Led[2]);
+    HAL_Delay(retardo3);
+
+  }
+
+  void Secuencia4(uint16_t VECTOR_Led[3]){
+
+
+    toggleLed_GPIO(VECTOR_Led[0]);
+    toggleLed_GPIO(VECTOR_Led[1]);
+    toggleLed_GPIO(VECTOR_Led[2]);
+    HAL_Delay(retardo4);
+    toggleLed_GPIO(VECTOR_Led[0]);
+    toggleLed_GPIO(VECTOR_Led[1]);
+    toggleLed_GPIO(VECTOR_Led[2]);
+    HAL_Delay(retardo4);
+  }
 
 void Error_Handler(void)
 {
