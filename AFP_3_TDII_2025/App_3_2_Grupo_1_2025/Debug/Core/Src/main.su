@@ -1,0 +1,8 @@
+../Core/Src/main.c:90:5:main	32	static
+../Core/Src/main.c:219:6:SystemClock_Config	88	static
+../Core/Src/main.c:265:7:MX_ETH_Init	8	static
+../Core/Src/main.c:314:7:MX_USART3_UART_Init	8	static
+../Core/Src/main.c:347:7:MX_USB_OTG_FS_PCD_Init	8	static
+../Core/Src/main.c:382:8:sec1	32	static
+../Core/Src/main.c:422:8:sec2	32	static
+../Core/Src/main.c:465:6:Error_Handler	4	static,ignoring_inline_asm

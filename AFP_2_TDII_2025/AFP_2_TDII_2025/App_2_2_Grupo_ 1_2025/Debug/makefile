@@ -61,8 +61,8 @@ all: main-build
 main-build: Ejemplo2_Driver_GPIO.elf secondary-outputs
 
 # Tool invocations
-Ejemplo2_Driver_GPIO.elf Ejemplo2_Driver_GPIO.map: $(OBJS) $(USER_OBJS) C:\Users\Martin\STM32CubeIDE\workspace_1.18.1\Ejemplo2_Driver_GPIO\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Ejemplo2_Driver_GPIO.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Martin\STM32CubeIDE\workspace_1.18.1\Ejemplo2_Driver_GPIO\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Ejemplo2_Driver_GPIO.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Ejemplo2_Driver_GPIO.elf Ejemplo2_Driver_GPIO.map: $(OBJS) $(USER_OBJS) C:\Users\KING\Downloads\Grupo_1_TDII_2025-main\ (1)\Grupo_1_TDII_2025-main\AFP_2_TDII_2025\AFP_2_TDII_2025\App_2_2_Grupo_\ 1_2025\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Ejemplo2_Driver_GPIO.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\KING\Downloads\Grupo_1_TDII_2025-main (1)\Grupo_1_TDII_2025-main\AFP_2_TDII_2025\AFP_2_TDII_2025\App_2_2_Grupo_ 1_2025\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Ejemplo2_Driver_GPIO.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

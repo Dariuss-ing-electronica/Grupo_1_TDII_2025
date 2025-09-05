@@ -20,6 +20,10 @@
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
+#define retardo1 150
+#define retardo2 300
+#define retardo3 100
+#define retardo4 150
 /* USER CODE BEGIN Includes */
 #include "API_GPIO.h"
 /* USER CODE END Includes */
@@ -358,7 +362,7 @@ static void MX_USB_OTG_FS_PCD_Init(void)
 void Secuencia1(uint16_t VECTOR_Led[3])
 
 {
-int retardo1=150 ;
+
 
 for (uint8_t i = 0; i < 3; i++){
 
@@ -374,7 +378,7 @@ void Secuencia2(uint16_t VECTOR_Led[3])
 
 {
 
-int retardo2=300;
+
 
 writeLedOn_GPIO( VECTOR_Led[0]);
 writeLedOn_GPIO( VECTOR_Led[1]);
@@ -394,7 +398,7 @@ HAL_Delay(retardo2);
 
 void Secuencia3(uint16_t VECTOR_Led[3])
 {
-     int retardo3=100;
+     
 
 	 toggleLed_GPIO(VECTOR_Led[0]);
 	 HAL_Delay(retardo3);
@@ -420,7 +424,7 @@ void Secuencia3(uint16_t VECTOR_Led[3])
 
 void Secuencia4(uint16_t VECTOR_Led[3])
 {
-    int retardo4=150 ;
+    
 
 	toggleLed_GPIO(VECTOR_Led[0]);
 	toggleLed_GPIO(VECTOR_Led[2]);

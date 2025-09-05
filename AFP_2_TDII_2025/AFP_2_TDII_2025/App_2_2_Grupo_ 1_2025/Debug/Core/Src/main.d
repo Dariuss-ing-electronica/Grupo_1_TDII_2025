@@ -29,7 +29,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- C:/Users/Martin/STM32CubeIDE/workspace_1.18.1/Ejemplo2_Driver_GPIO/Drivers/API/Inc/API_GPIO.h
+ C:/Users/KING/Downloads/Grupo_1_TDII_2025-main\ (1)/Grupo_1_TDII_2025-main/AFP_2_TDII_2025/AFP_2_TDII_2025/App_2_2_Grupo_\ 1_2025/Drivers/API/Inc/API_GPIO.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -61,4 +61,4 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
-C:/Users/Martin/STM32CubeIDE/workspace_1.18.1/Ejemplo2_Driver_GPIO/Drivers/API/Inc/API_GPIO.h:
+C:/Users/KING/Downloads/Grupo_1_TDII_2025-main\ (1)/Grupo_1_TDII_2025-main/AFP_2_TDII_2025/AFP_2_TDII_2025/App_2_2_Grupo_\ 1_2025/Drivers/API/Inc/API_GPIO.h:
