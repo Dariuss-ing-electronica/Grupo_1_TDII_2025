@@ -29,7 +29,7 @@ Drivers/API/Src/API_Delay.o: ../Drivers/API/Src/API_Delay.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- C:/Users/KING/STM32CubeIDE/workspace_1.19.0/AFP_3_2_Grupo_1_2025/Drivers/API/Inc/API_Delay.h
+ C:/Users/KING/OneDrive\ -\ frt.utn.edu.ar/ING.\ ELECTRÓNICA/4°\ AÑO\ ING.ELECTRONICA/TED\ II/Grupo_1_TDII_2025/AFP_3_TDII_2025/App_3_2_Grupo_1_2025/Drivers/API/Inc/API_Delay.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -61,4 +61,4 @@ Drivers/API/Src/API_Delay.o: ../Drivers/API/Src/API_Delay.c \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
-C:/Users/KING/STM32CubeIDE/workspace_1.19.0/AFP_3_2_Grupo_1_2025/Drivers/API/Inc/API_Delay.h:
+C:/Users/KING/OneDrive\ -\ frt.utn.edu.ar/ING.\ ELECTRÓNICA/4°\ AÑO\ ING.ELECTRONICA/TED\ II/Grupo_1_TDII_2025/AFP_3_TDII_2025/App_3_2_Grupo_1_2025/Drivers/API/Inc/API_Delay.h:

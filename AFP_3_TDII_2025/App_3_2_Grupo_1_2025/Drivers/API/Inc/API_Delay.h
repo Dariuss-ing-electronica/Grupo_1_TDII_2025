@@ -1,8 +1,8 @@
 /*
  * API_Delay.h
  *
- *  Created on: Nov 3, 2024
- *      Author: Grupo 3_TD2	Enrique Emanuel Decima, Castro Oscar Martin, Ortiz Nicolas Agustín
+ *  Created on: August 31, 2025
+ *      Author: Grupo 1_TD2	Pistan Ulises, Lucero Dario Alejandro, Rivero Martin, Leguizamon Marcelo
  */
 
 #ifndef API_INC_API_DELAY_H_

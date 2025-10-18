@@ -25,7 +25,7 @@
 #define retardo1 150
 #define retardo2 300
 #define retardo3 100
-#define retardo4 150
+#define retardo4 600
 #define CANT_LED 3
 #define FRECUENCIAS 4
 /* USER CODE BEGIN Includes */
@@ -105,10 +105,23 @@ int main(void)
         int8_t i=0;
 
 	  /* USER CODE BEGIN 1 */
+        //variables de delay para secuencias 1 y 2
 	    int8_t opcion = 0;
 	    delay_t timer_inicio;
 	    delay_t timer_lectura_boton;
-	    delayInit(&timer_inicio, vector_frecuencias[opcion]);
+        delayInit(&timer_inicio, vector_frecuencias[opcion]);
+
+	    //variables para el manejo de secuencias 3 y 4
+	    delay_t timer_led1, timer_led2, timer_led3;   // temporizadores independientes
+	    bool estado_led1 = false, estado_led2 = false, estado_led3 = false;
+
+	    //Inicialización de timers secundario para el manejo de delays
+        delayInit(&timer_led1, vector_frecuencias[2]);
+	    delayInit(&timer_led2, vector_frecuencias[1]);
+	    delayInit(&timer_led3, vector_frecuencias[3]);
+
+
+	    delayInit(&timer_led2, vector_frecuencias[0]);
 
 	    delayInit(&timer_lectura_boton, 20);
 
@@ -218,45 +231,136 @@ int main(void)
 
       case 3:
 
-           Secuencia3(LEDS);
 
+    	  // Secuencia 3
+
+    	          	  delayWrite(&timer_led1, vector_frecuencias[2]);
+
+    	          	  if(delayRead(&timer_led1))
+    	          	  {
+    	          		  if(estado_led1)
+    	          		  {
+    	          			  writeLedOff_GPIO(LEDS[0]);
+
+    	          	      	  //inicio de la secuencia
+    	          	      	  estado_led1 = false;
+    	          	      }
+    	          	      else
+    	          	      {
+    	          	      	writeLedOn_GPIO(LEDS[0]);
+
+    	          	      	estado_led1 = true;
+    	          	      }
+    	          	   }
+delayWrite(&timer_led2, vector_frecuencias[1]);
+
+if(delayRead(&timer_led2))
+   {
+     if(estado_led2)
+  {
+    	 writeLedOff_GPIO(LEDS[1]);
+
+   //inicio de la secuencia
+    estado_led2 = false;
+    	       }
+   else
+  {
+   writeLedOn_GPIO(LEDS[1]);
+
+    	estado_led2 = true;
+    	        }
+    	   }
+
+delayWrite(&timer_led3, vector_frecuencias[3]);
+
+if(delayRead(&timer_led3))
+   {
+     if(estado_led3)
+  {
+    	 writeLedOff_GPIO(LEDS[2]);
+
+   //inicio de la secuencia
+    estado_led3 = false;
+    	       }
+   else
+  {
+   writeLedOn_GPIO(LEDS[2]);
+
+    	estado_led3 = true;
+    	        }
+    	   }
                      break;
       case 4:
 
-    	  Secuencia4(LEDS);
+ //secuencia 4
+    	  delayWrite(&timer_led1, vector_frecuencias[0]);
 
+    	  if(delayRead(&timer_led1))
+    	    {
+    	      if(estado_led1)
+    	    	{  writeLedOn_GPIO(LEDS[0]);
+    	    	   writeLedOn_GPIO(LEDS[2]);
+
+    	    //inicio de la secuencia
+    	     estado_led1 = false;
+    	    	     }
+    	     else
+    	     {    writeLedOff_GPIO(LEDS[0]);
+    	          writeLedOff_GPIO(LEDS[2]);
+
+    	    	estado_led1 = true;
+    	    	 }
+    	    	   }
+
+
+    	  delayWrite(&timer_led2, vector_frecuencias[0]);
+
+          if(delayRead(&timer_led2))
+    	    {
+    	      if(estado_led2)
+    	     	{
+    	    	  writeLedOff_GPIO(LEDS[1]);
+
+                 //inicio de la secuencia
+    	     	   estado_led2 = false;
+    	     	    	                }
+    	     	     else
+    	     	       { writeLedOn_GPIO(LEDS[1]);
+
+    	     	    	    estado_led2 = true;
+    	     	    	 }
+    	     	    	   }
 
          break;
 
       default:
-    	  // Secuencia 1
-    	  delayWrite(&timer_inicio, vector_frecuencias[opcion]);
-    	      	  	  if(delayRead(&timer_inicio))
-    	      	  	 	      {
-    	      	  	 	 	 if(estado_led)
+  // Secuencia 1
+  delayWrite(&timer_inicio, vector_frecuencias[opcion]);
 
-    	      	  	 	 	 {
-    	      	  	 	 	   writeLedOff_GPIO(LEDS[i]);
-    	      	  	 	 	    //inicio de la secuencia
-    	      	  	 	 	   if(i==(CANT_LED-1))
+  if(delayRead(&timer_inicio))
+    {
+     if(estado_led)
+      {
+       writeLedOff_GPIO(LEDS[i]);
+       //inicio de la secuencia
+       if(i==(CANT_LED-1))
+        { i=0;
 
-    	      	  	 	 	   {    i=0;
+    	      }
 
-    	      	  	 	 	         }
+    	   else{
+    	      	 i++;
 
-    	      	  	 	 	   else{
-    	      	  	 	 	    	i++;
+    	      	  	 }
 
-    	      	  	 	 	    			  }
+    	      	 estado_led = false;
 
-    	      	  	 	 	   estado_led = false;
+    	      	  	 	  }
+    	      	  	  }
 
-    	      	  	 	 	    }
-    	      	  	 	      }
-
-    	      	  	 	 	 else{
-    	      	  	 	 	 			  writeLedOn_GPIO(LEDS[i]);
-    	      	  	 	 	 			  estado_led = true;
+    	      	   else{
+    	      	  	 	 writeLedOn_GPIO(LEDS[i]);
+    	      	  	      estado_led = true;
     	      	  	 	 	 		  }
 
 
@@ -268,7 +372,7 @@ int main(void)
 
           // Lectura del botón
                estado_actual_boton= readButton_GPIO();
-
+          //delay para la detección del boton
                if(estado_actual_boton)
                {
              	  if(delayRead(&timer_lectura_boton))
@@ -277,11 +381,16 @@ int main(void)
          		   if ( estado_actual_boton==1 && estado_siguiente_boton==0)
          		   {
          			   contador++;
-         			   if (contador>=5) contador = 1;
+         			   if (contador>5) contador = 1;
+
+         			  writeLedOff_GPIO(LEDS[0]);
+         			  writeLedOff_GPIO(LEDS[1]);
+         			  writeLedOff_GPIO(LEDS[2]);
          		   }
          		   estado_boton = true;
              	  }
                }
+
                else
                {
              	  estado_boton = false;
@@ -533,13 +642,13 @@ void Secuencia4(uint16_t VECTOR_Led[3])
 
 	toggleLed_GPIO(VECTOR_Led[0]);
 	toggleLed_GPIO(VECTOR_Led[2]);
-	HAL_Delay(retardo4);
+	HAL_Delay(retardo1);
 
-	toggleLed_GPIO(VECTOR_Led[0]);
+    toggleLed_GPIO(VECTOR_Led[0]);
 	toggleLed_GPIO(VECTOR_Led[2]);
 
 	toggleLed_GPIO(VECTOR_Led[1]);
-	HAL_Delay(retardo4);
+	HAL_Delay(retardo1);
 	toggleLed_GPIO(VECTOR_Led[1]);
 }
 
