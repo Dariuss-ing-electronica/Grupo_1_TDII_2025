@@ -29,9 +29,9 @@ Drivers/API/Src/API_debounce.o: ../Drivers/API/Src/API_debounce.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- C:/Users/KING/OneDrive\ -\ frt.utn.edu.ar/ING.\ ELECTRÓNICA/4°\ AÑO\ ING.ELECTRONICA/TED\ II/Grupo_1_TDII_2025/AFP_4_TDII_2025/App_3_2_Grupo_1_2025/Drivers/API/Inc/API_debounce.h \
- C:/Users/KING/OneDrive\ -\ frt.utn.edu.ar/ING.\ ELECTRÓNICA/4°\ AÑO\ ING.ELECTRONICA/TED\ II/Grupo_1_TDII_2025/AFP_4_TDII_2025/App_3_2_Grupo_1_2025/Drivers/API/Inc/API_delay.h \
- C:/Users/KING/OneDrive\ -\ frt.utn.edu.ar/ING.\ ELECTRÓNICA/4°\ AÑO\ ING.ELECTRONICA/TED\ II/Grupo_1_TDII_2025/AFP_4_TDII_2025/App_3_2_Grupo_1_2025/Drivers/API/Inc/API_GPIO.h
+ C:/Users/KING/OneDrive\ -\ frt.utn.edu.ar/ING.\ ELECTRÓNICA/4°\ AÑO\ ING.ELECTRONICA/TED\ II/Grupo_1_TDII_2025/AFP_5_TDII_2025/App_5_2_Grupo_1_2025/Drivers/API/Inc/API_debounce.h \
+ C:/Users/KING/OneDrive\ -\ frt.utn.edu.ar/ING.\ ELECTRÓNICA/4°\ AÑO\ ING.ELECTRONICA/TED\ II/Grupo_1_TDII_2025/AFP_5_TDII_2025/App_5_2_Grupo_1_2025/Drivers/API/Inc/API_delay.h \
+ C:/Users/KING/OneDrive\ -\ frt.utn.edu.ar/ING.\ ELECTRÓNICA/4°\ AÑO\ ING.ELECTRONICA/TED\ II/Grupo_1_TDII_2025/AFP_5_TDII_2025/App_5_2_Grupo_1_2025/Drivers/API/Inc/API_GPIO.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -63,6 +63,6 @@ Drivers/API/Src/API_debounce.o: ../Drivers/API/Src/API_debounce.c \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
-C:/Users/KING/OneDrive\ -\ frt.utn.edu.ar/ING.\ ELECTRÓNICA/4°\ AÑO\ ING.ELECTRONICA/TED\ II/Grupo_1_TDII_2025/AFP_4_TDII_2025/App_3_2_Grupo_1_2025/Drivers/API/Inc/API_debounce.h:
-C:/Users/KING/OneDrive\ -\ frt.utn.edu.ar/ING.\ ELECTRÓNICA/4°\ AÑO\ ING.ELECTRONICA/TED\ II/Grupo_1_TDII_2025/AFP_4_TDII_2025/App_3_2_Grupo_1_2025/Drivers/API/Inc/API_delay.h:
-C:/Users/KING/OneDrive\ -\ frt.utn.edu.ar/ING.\ ELECTRÓNICA/4°\ AÑO\ ING.ELECTRONICA/TED\ II/Grupo_1_TDII_2025/AFP_4_TDII_2025/App_3_2_Grupo_1_2025/Drivers/API/Inc/API_GPIO.h:
+C:/Users/KING/OneDrive\ -\ frt.utn.edu.ar/ING.\ ELECTRÓNICA/4°\ AÑO\ ING.ELECTRONICA/TED\ II/Grupo_1_TDII_2025/AFP_5_TDII_2025/App_5_2_Grupo_1_2025/Drivers/API/Inc/API_debounce.h:
+C:/Users/KING/OneDrive\ -\ frt.utn.edu.ar/ING.\ ELECTRÓNICA/4°\ AÑO\ ING.ELECTRONICA/TED\ II/Grupo_1_TDII_2025/AFP_5_TDII_2025/App_5_2_Grupo_1_2025/Drivers/API/Inc/API_delay.h:
+C:/Users/KING/OneDrive\ -\ frt.utn.edu.ar/ING.\ ELECTRÓNICA/4°\ AÑO\ ING.ELECTRONICA/TED\ II/Grupo_1_TDII_2025/AFP_5_TDII_2025/App_5_2_Grupo_1_2025/Drivers/API/Inc/API_GPIO.h:

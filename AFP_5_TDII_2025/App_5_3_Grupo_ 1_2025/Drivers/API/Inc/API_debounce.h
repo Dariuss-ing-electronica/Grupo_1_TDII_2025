@@ -9,7 +9,6 @@
  *      RIVERO MARTIN
  */
 
-
 #ifndef API_INC_API_DEBOUNCE_H_
 #define API_INC_API_DEBOUNCE_H_
 
