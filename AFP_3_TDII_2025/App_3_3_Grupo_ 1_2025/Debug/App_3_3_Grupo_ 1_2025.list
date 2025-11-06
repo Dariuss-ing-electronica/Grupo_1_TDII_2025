@@ -29,25 +29,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  0000501c  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0000e7b6  00000000  00000000  0000504c  2**0
+ 13 .debug_info   0000e7b7  00000000  00000000  0000504c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 00001f5d  00000000  00000000  00013802  2**0
+ 14 .debug_abbrev 00001f4c  00000000  00000000  00013803  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 00000bc0  00000000  00000000  00015760  2**3
+ 15 .debug_aranges 00000bc0  00000000  00000000  00015750  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_rnglists 00000907  00000000  00000000  00016320  2**0
+ 16 .debug_rnglists 00000907  00000000  00000000  00016310  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  00024003  00000000  00000000  00016c27  2**0
+ 17 .debug_macro  00024003  00000000  00000000  00016c17  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0000dbad  00000000  00000000  0003ac2a  2**0
+ 18 .debug_line   0000dbad  00000000  00000000  0003ac1a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000d97a7  00000000  00000000  000487d7  2**0
+ 19 .debug_str    000d97b2  00000000  00000000  000487c7  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  00121f7e  2**0
+ 20 .comment      00000043  00000000  00000000  00121f79  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00003130  00000000  00000000  00121fc4  2**2
+ 21 .debug_frame  00003130  00000000  00000000  00121fbc  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 000000ae  00000000  00000000  001250f4  2**0
+ 22 .debug_line_str 000000ae  00000000  00000000  001250ec  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -388,7 +388,7 @@ int main(void)
  8000524:	2300      	movs	r3, #0
  8000526:	f887 3046 	strb.w	r3, [r7, #70]	@ 0x46
 	    uint8_t estado_actual_boton;
-        int8_t i=0;
+        int8_t incremento=0; //variable para la secuencia de led como un for
  800052a:	2300      	movs	r3, #0
  800052c:	f887 3045 	strb.w	r3, [r7, #69]	@ 0x45
 
@@ -411,7 +411,7 @@ int main(void)
 
 	    //variables para el manejo de secuencias 3 y 4
 	    delay_t timer_led1, timer_led2, timer_led3;   // temporizadores independientes
-	    bool estado_led1 = false, estado_led2 = false, estado_led3 = false;
+	    bool estado_led1 = false, estado_led2 = false, estado_led3 = false; //variables independientes
  800054e:	2300      	movs	r3, #0
  8000550:	f887 3043 	strb.w	r3, [r7, #67]	@ 0x43
  8000554:	2300      	movs	r3, #0
@@ -444,7 +444,6 @@ int main(void)
  800058c:	4611      	mov	r1, r2
  800058e:	4618      	mov	r0, r3
  8000590:	f000 fd27 	bl	8000fe2 <delayInit>
-
 
 	    delayInit(&timer_led2, vector_frecuencias[0]);
  8000594:	4ba5      	ldr	r3, [pc, #660]	@ (800082c <main+0x314>)
@@ -537,19 +536,19 @@ int main(void)
  8000626:	f000 8178 	beq.w	800091a <main+0x402>
 
     	  	 	 	 {
-    	  	 	 	   writeLedOff_GPIO(LEDS[i]);
+    	  	 	 	   writeLedOff_GPIO(LEDS[incremento]);
  800062a:	f997 3045 	ldrsb.w	r3, [r7, #69]	@ 0x45
  800062e:	4a80      	ldr	r2, [pc, #512]	@ (8000830 <main+0x318>)
  8000630:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
  8000634:	4618      	mov	r0, r3
  8000636:	f000 fdd9 	bl	80011ec <writeLedOff_GPIO>
     	  	 	 	    //inicio de la secuencia
-    	  	 	 	   if(i==(CANT_LED-1))
+    	  	 	 	   if(incremento==(CANT_LED-1))
  800063a:	f997 3045 	ldrsb.w	r3, [r7, #69]	@ 0x45
  800063e:	2b02      	cmp	r3, #2
  8000640:	d103      	bne.n	800064a <main+0x132>
 
-    	  	 	 	   {    i=0;
+    	  	 	 	   {    incremento=0;
  8000642:	2300      	movs	r3, #0
  8000644:	f887 3045 	strb.w	r3, [r7, #69]	@ 0x45
  8000648:	e006      	b.n	8000658 <main+0x140>
@@ -557,7 +556,7 @@ int main(void)
     	  	 	 	         }
 
     	  	 	 	   else{
-    	  	 	 	    	i++;
+    	  	 	 	    	incremento++;
  800064a:	f997 3045 	ldrsb.w	r3, [r7, #69]	@ 0x45
  800064e:	b2db      	uxtb	r3, r3
  8000650:	3301      	adds	r3, #1
@@ -576,7 +575,7 @@ int main(void)
 
                      break;
  800065e:	e15c      	b.n	800091a <main+0x402>
-    	  	 	 	 			  writeLedOn_GPIO(LEDS[i]);
+    	  	 	 	 			  writeLedOn_GPIO(LEDS[incremento]);
  8000660:	f997 3045 	ldrsb.w	r3, [r7, #69]	@ 0x45
  8000664:	4a72      	ldr	r2, [pc, #456]	@ (8000830 <main+0x318>)
  8000666:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
@@ -715,6 +714,7 @@ int main(void)
  800074a:	f887 3043 	strb.w	r3, [r7, #67]	@ 0x43
     	          	      }
     	          	   }
+
 delayWrite(&timer_led2, vector_frecuencias[1]);
  800074e:	4b37      	ldr	r3, [pc, #220]	@ (800082c <main+0x314>)
  8000750:	885b      	ldrh	r3, [r3, #2]
@@ -949,18 +949,18 @@ if(delayRead(&timer_led3))
  80008c8:	2b00      	cmp	r3, #0
  80008ca:	d02e      	beq.n	800092a <main+0x412>
       {
-       writeLedOff_GPIO(LEDS[i]);
+       writeLedOff_GPIO(LEDS[incremento]);
  80008cc:	f997 3045 	ldrsb.w	r3, [r7, #69]	@ 0x45
  80008d0:	4a39      	ldr	r2, [pc, #228]	@ (80009b8 <main+0x4a0>)
  80008d2:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
  80008d6:	4618      	mov	r0, r3
  80008d8:	f000 fc88 	bl	80011ec <writeLedOff_GPIO>
        //inicio de la secuencia
-       if(i==(CANT_LED-1))
+       if(incremento==(CANT_LED-1))
  80008dc:	f997 3045 	ldrsb.w	r3, [r7, #69]	@ 0x45
  80008e0:	2b02      	cmp	r3, #2
  80008e2:	d103      	bne.n	80008ec <main+0x3d4>
-        { i=0;
+        { incremento=0;
  80008e4:	2300      	movs	r3, #0
  80008e6:	f887 3045 	strb.w	r3, [r7, #69]	@ 0x45
  80008ea:	e006      	b.n	80008fa <main+0x3e2>
@@ -968,7 +968,7 @@ if(delayRead(&timer_led3))
     	      }
 
     	   else{
-    	      	 i++;
+    	      	 incremento++;
  80008ec:	f997 3045 	ldrsb.w	r3, [r7, #69]	@ 0x45
  80008f0:	b2db      	uxtb	r3, r3
  80008f2:	3301      	adds	r3, #1
@@ -980,14 +980,14 @@ if(delayRead(&timer_led3))
     	      	 estado_led = false;
  80008fa:	2300      	movs	r3, #0
  80008fc:	f887 3040 	strb.w	r3, [r7, #64]	@ 0x40
-    	      	  	 	 writeLedOn_GPIO(LEDS[i]);
+    	      	  	 	 writeLedOn_GPIO(LEDS[incremento]);
     	      	  	      estado_led = true;
     	      	  	 	 	 		  }
 
 
         	  break;
  8000900:	e013      	b.n	800092a <main+0x412>
-    	      	  	 	 writeLedOn_GPIO(LEDS[i]);
+    	      	  	 	 writeLedOn_GPIO(LEDS[incremento]);
  8000902:	f997 3045 	ldrsb.w	r3, [r7, #69]	@ 0x45
  8000906:	4a2c      	ldr	r2, [pc, #176]	@ (80009b8 <main+0x4a0>)
  8000908:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]

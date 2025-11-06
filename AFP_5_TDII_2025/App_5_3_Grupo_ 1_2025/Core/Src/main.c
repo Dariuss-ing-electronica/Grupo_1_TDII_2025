@@ -47,9 +47,9 @@
 
  uint16_t LEDS[CANT_LED] = {LD1_Pin, LD2_Pin, LD3_Pin}; /*Creo vector de LEDs de usuario*/
  uint16_t vector_frecuencias[FRECUENCIAS] = {retardo1, retardo2, retardo3 ,retardo4};
-/* USER CODE END PD */
- bool readButton = true;
 
+ /* USER CODE END PD */
+ bool readButton = true;
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 
@@ -107,82 +107,85 @@ int main(void)
 {
 
 
-	  /* USER CODE BEGIN 1 */
-        //variables de delay para secuencias 1 y 2
+/* USER CODE BEGIN 1 */
 
-	    delay_t timer_inicio;
+//variables de delay para secuencias 1 y 2
 
-        delayInit(&timer_inicio, vector_frecuencias[FRECUENCIAS]);
+delay_t timer_inicio;
 
-	    //variables para el manejo de secuencias 3 y 4
+delayInit(&timer_inicio, vector_frecuencias[FRECUENCIAS]);
 
-	    delay_t timer_led1, timer_led2, timer_led3;   // temporizadores independientes
-	    bool_t estado_led1 = false, estado_led2 = false, estado_led3 = false;
-        delayInit(&timer_led1, vector_frecuencias[2]);
-	    delayInit(&timer_led2, vector_frecuencias[1]);
-	    delayInit(&timer_led3, vector_frecuencias[3]);
+//variables para el manejo de secuencias 3 y 4
 
-        //Variables y def para la lectura de boton
+delay_t timer_led1, timer_led2, timer_led3;   // temporizadores independientes
+bool_t estado_led1 = false, estado_led2 = false, estado_led3 = false;
+delayInit(&timer_led1, vector_frecuencias[2]);
+delayInit(&timer_led2, vector_frecuencias[1]);
+delayInit(&timer_led3, vector_frecuencias[3]);
 
-	    int16_t contador=0;
-	    int16_t i=0;
+//Variables y def para la lectura de boton
 
-	    bool_t estado_led = false; // Almacena en que fase de la secuencia se encuentra el led. true-> Encendido, false-> Apagado.
-	    bool_t statusButton = false;
-	    bool_t botonPresionadoAntes = false; // Flag para detectar el flanco (true = suelto)
+int16_t contador=0;
+int16_t i=0;
+
+bool_t estado_led = false; // Almacena en que fase de la secuencia se encuentra el led. true-> Encendido, false-> Apagado.
+bool_t statusButton = false;
+bool_t botonPresionadoAntes = false; // Flag para detectar el flanco (true = suelto)
 
 
-  /* USER CODE BEGIN 1 */
+/* USER CODE BEGIN 1 */
 
-  /* USER CODE END 1 */
-  //Inicializo la MSF
+/* USER CODE END 1 */
+//Inicializo la MSF
 
-  debounceFSM_init();
-  /* MCU Configuration--------------------------------------------------------*/
+debounceFSM_init();
+/* MCU Configuration--------------------------------------------------------*/
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+HAL_Init();
 
-  /* USER CODE BEGIN Init */
+/* USER CODE BEGIN Init */
 
-  /* USER CODE END Init */
+/* USER CODE END Init */
 
-  /* Configure the system clock */
-  SystemClock_Config();
+/* Configure the system clock */
+SystemClock_Config();
 
-  /* USER CODE BEGIN SysInit */
+/* USER CODE BEGIN SysInit */
 
-  /* USER CODE END SysInit */
+/* USER CODE END SysInit */
 
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_ETH_Init();
-  MX_USART3_UART_Init();
-  MX_USB_OTG_FS_PCD_Init();
-  /* USER CODE BEGIN 2 */
+/* Initialize all configured peripherals */
+MX_GPIO_Init();
+MX_ETH_Init();
+MX_USART3_UART_Init();
+MX_USB_OTG_FS_PCD_Init();
+/* USER CODE BEGIN 2 */
 
-  /* USER CODE END 2 */
+/* USER CODE END 2 */
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
+/* Infinite loop */
+/* USER CODE BEGIN WHILE */
   while (1)
   {
 //SELECCION DE SECUENCIA
-          switch (contador)
-               {
-      case 0:
-    	  // Secuencia 1
-    	  delayWrite(&timer_inicio, vector_frecuencias[0]);
-    	  	  if(delayRead(&timer_inicio))
-    	  	 	      {
-    	  	 	 	 if(estado_led)
 
-    	  	 	 	 {
-    	  	 	 	   writeLedOff_GPIO(LEDS[i]);
-    	  	 	 	    //inicio de la secuencia
-    	  	 	 	   if(i==(CANT_LED-1))
+ switch (contador)
+ {
+   case 0:
+  // Secuencia 1
+  delayWrite(&timer_inicio, vector_frecuencias[0]);
+   if(delayRead(&timer_inicio))
 
-    	  	 	 	   {    i=0;
+    {
+      if(estado_led)
+
+      {
+    	writeLedOff_GPIO(LEDS[i]);
+    	 //inicio de la secuencia
+    	  if(i==(CANT_LED-1))
+
+    	  	{    i=0;
 
     	  	 	 	         }
 

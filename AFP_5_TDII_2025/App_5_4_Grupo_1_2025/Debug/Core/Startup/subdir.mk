@@ -16,7 +16,7 @@ S_DEPS += \
 
 # Each subdirectory must supply rules for building sources it contributes
 Core/Startup/%.o: ../Core/Startup/%.s Core/Startup/subdir.mk
-	arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I"C:/Users/KING/OneDrive - frt.utn.edu.ar/ING. ELECTRÓNICA/4° AÑO ING.ELECTRONICA/TED II/Grupo_1_TDII_2025/AFP_3_TDII_2025/App_3_4_Grupo_1_2025/Drivers/API/Inc" -x assembler-with-cpp -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I"C:/Users/KING/OneDrive - frt.utn.edu.ar/ING. ELECTRÓNICA/4° AÑO ING.ELECTRONICA/TED II/Grupo_1_TDII_2025/AFP_5_TDII_2025/App_5_4_Grupo_1_2025/Drivers/API/Inc" -x assembler-with-cpp -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@" "$<"
 
 clean: clean-Core-2f-Startup
 

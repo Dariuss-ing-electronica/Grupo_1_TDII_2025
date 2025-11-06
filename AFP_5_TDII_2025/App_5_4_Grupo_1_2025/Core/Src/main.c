@@ -21,6 +21,9 @@
 #include "string.h"
 #include "API_GPIO.h"
 #include "API_Delay.h"
+#include "API_debounce.h"
+#include <stdint.h>
+#include <stdbool.h>
 #define CANT_LED 3
 #define FRECUENCIAS 4
 #define retardo1 100
@@ -31,7 +34,7 @@
 uint16_t LEDS[CANT_LED] = {LD1_Pin, LD2_Pin, LD3_Pin}; /*Creo vector de LEDs de usuario*/
 uint16_t vector_frecuencias[FRECUENCIAS] = {retardo1, retardo2, retardo3 ,retardo4};
 /* USER CODE BEGIN Includes */
-
+bool readButton = true;
 
   /* USER CODE END Includes */
 
@@ -108,11 +111,6 @@ void SystemClock_Config(void);
 
 int main(void)
 {
-	int8_t  contador =1;
-    uint8_t estado_siguiente_boton=0; // Pull-up en PC13
-    uint8_t estado_actual_boton;
-
-
   /* USER CODE BEGIN 1 */
     int8_t opcion = 0;
     delay_t timer_inicio;
@@ -121,9 +119,16 @@ int main(void)
 
     delayInit(&timer_lectura_boton, 20);
 
+    //Variables y def para la lectura de boton
+
+    int16_t contador=0;
+
+
     /* Variables para realizar la lectura del boton*/
     bool_t estado_led = false; // Almacena en que fase de la secuencia se encuentra el led. true-> Encendido, false-> Apagado.
-    bool_t estado_boton = false;
+    bool_t statusButton = false;
+   	bool_t botonPresionadoAntes = false; // Flag para detectar el flanco (true = suelto)
+
 
   /* USER CODE END 1 */
 
@@ -134,6 +139,9 @@ int main(void)
 
   /* USER CODE BEGIN Init */
 
+  //Inicializo la maquina de estado finito
+
+  debounceFSM_init();
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -157,12 +165,10 @@ int main(void)
   while (1)
   {
 
-	do
-	{
 	 //SELECCION DE SECUENCIA
      switch (contador)
      {
-      case 1:
+      case 0:
     	  // Secuencia 1
     	  delayWrite(&timer_inicio, vector_frecuencias[opcion]);
     	  if(delayRead(&timer_inicio))
@@ -185,9 +191,9 @@ int main(void)
     	  }
     	  break;
 
-      case 2:
+      case 1:
     	  // Secuencia 2
-    	  opcion=contador-1;
+    	  opcion=contador;
     	  delayWrite(&timer_inicio, vector_frecuencias[opcion]);
     	  if(delayRead(&timer_inicio))
     	  {
@@ -209,9 +215,9 @@ int main(void)
     	   }
     	  break;
 
-      case 3:
+      case 2:
     	  // Secuencia 3
-    	 opcion=contador-1;
+    	 opcion=contador;
     	 delayWrite(&timer_inicio, vector_frecuencias[opcion]);
     	 if(delayRead(&timer_inicio))
     	 {
@@ -233,9 +239,9 @@ int main(void)
     	 }
                      break;
 
-      case 4:
+      case 3:
     	  // Secuencia 4
-    	  opcion=contador-1;
+    	  opcion=contador;
     	  delayWrite(&timer_inicio, vector_frecuencias[opcion]);
     	  if(delayRead(&timer_inicio))
     	  {
@@ -283,30 +289,34 @@ int main(void)
 
       }
 
-      // Lectura del botón
-      estado_actual_boton= readButton_GPIO();
+readButton = readButton_GPIO();
+//Paso la lectura del boton
+debounceFSM_update(readButton);
 
-      if(estado_actual_boton)
-      {
-    	  if(delayRead(&timer_lectura_boton))
-    	  {
-   // Detectar flanco de bajada presionado)
-		   if ( estado_actual_boton==1 && estado_siguiente_boton==0)
-		   {
-			   contador++;
-			   if (contador >5) contador = 1;
-		   }
-		   estado_boton = true;
-    	  }
-      }
-      else
-      {
-    	  estado_boton = false;
-      }
-      estado_siguiente_boton= estado_actual_boton;
+//lectura del estado actual del boton (debounced)
+statusButton = readKey();
 
-      // Sale del do-while y cambia la secuencia
-  }while (estado_siguiente_boton !=0);
+// --- LÓGICA DE DETECCIÓN DE FLANCO ---
+// Verificamos si el botón ESTÁ presionado AHORA (true)
+// Y si ANTES NO ESTABA presionado (false)
+if (statusButton == true && botonPresionadoAntes == false)
+{
+  // ¡Flanco detectado! Incrementar el contador SOLO UNA VEZ
+  contador = contador + 1;
+
+  // Reiniciar el contador si supera el número de secuencias (0, 1, 2, 3)
+  if (contador >= 4)
+  {
+    contador = 0;
+         }
+ }
+
+// Actualizamos nuestro flag para la próxima vuelta del buclez
+// "El estado actual ahora será el estado anterior"
+botonPresionadoAntes = statusButton;
+
+
+
 
 /**********************************
  **********************************

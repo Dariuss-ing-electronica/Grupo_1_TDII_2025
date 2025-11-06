@@ -19,8 +19,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
-
-
 #include "string.h"
 #include "API_GPIO.h"
 #include "API_Delay.h"
@@ -126,7 +124,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int8_t i=0;
+  int8_t incremento=0;
   while (1)
   {
 
@@ -151,16 +149,16 @@ int main(void)
 	  	 	 if(estado_led)
 
 	  	 	 {
-	  	 	   writeLedOff_GPIO(LEDS[i]);
+	  	 	   writeLedOff_GPIO(LEDS[incremento]);
 	  	 	    //inicio de la secuencia
-	  	 	   if(i==0)
+	  	 	   if(incremento==0)
 
-	  	 	   {    i=(CANT_LED-1);
+	  	 	   {    incremento=(CANT_LED-1);
 
 	  	 	         }
 
 	  	 	   else{
-	  	 	    	i--;
+	  	 	    	incremento--;
 
 	  	 	    			  }
 
@@ -170,7 +168,7 @@ int main(void)
 	  	      }
 
 	  	 	 else{
-	  	 	 			  writeLedOn_GPIO(LEDS[i]);
+	  	 	 			  writeLedOn_GPIO(LEDS[incremento]);
 	  	 	 			  estado_led = true;
 	  	 	 		  }
   }
@@ -183,16 +181,16 @@ int main(void)
 	 	 	 if(estado_led)
 
 	 	 	 {
-	 	 	   writeLedOff_GPIO(LEDS[i]);
+	 	 	   writeLedOff_GPIO(LEDS[incremento]);
 	 	 	    //inicio de la secuencia
-	 	 	   if(i==(CANT_LED-1))
+	 	 	   if(incremento==(CANT_LED-1))
 
-	 	 	   {    i=0;
+	 	 	   {    incremento=0;
 
 	 	 	         }
 
 	 	 	   else{
-	 	 	    	i++;
+	 	 	    	incremento++;
 
 	 	 	    			  }
 
@@ -202,7 +200,7 @@ int main(void)
 	 	      }
 
 	 	 	 else{
-	 	 	 			  writeLedOn_GPIO(LEDS[i]);
+	 	 	 			  writeLedOn_GPIO(LEDS[incremento]);
 	 	 	 			  estado_led = true;
 	 	 	 		  }
 

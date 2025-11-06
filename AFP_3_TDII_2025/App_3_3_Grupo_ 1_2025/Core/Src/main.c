@@ -102,7 +102,7 @@ int main(void)
 	    int8_t  contador =1;
 	    uint8_t estado_siguiente_boton=0; // Pull-up en PC13
 	    uint8_t estado_actual_boton;
-        int8_t i=0;
+        int8_t incremento=0; //variable para la secuencia de led como un for
 
 	  /* USER CODE BEGIN 1 */
         //variables de delay para secuencias 1 y 2
@@ -113,13 +113,12 @@ int main(void)
 
 	    //variables para el manejo de secuencias 3 y 4
 	    delay_t timer_led1, timer_led2, timer_led3;   // temporizadores independientes
-	    bool estado_led1 = false, estado_led2 = false, estado_led3 = false;
+	    bool estado_led1 = false, estado_led2 = false, estado_led3 = false; //variables independientes
 
 	    //Inicialización de timers secundario para el manejo de delays
         delayInit(&timer_led1, vector_frecuencias[2]);
 	    delayInit(&timer_led2, vector_frecuencias[1]);
 	    delayInit(&timer_led3, vector_frecuencias[3]);
-
 
 	    delayInit(&timer_led2, vector_frecuencias[0]);
 
@@ -175,16 +174,16 @@ int main(void)
     	  	 	 	 if(estado_led)
 
     	  	 	 	 {
-    	  	 	 	   writeLedOff_GPIO(LEDS[i]);
+    	  	 	 	   writeLedOff_GPIO(LEDS[incremento]);
     	  	 	 	    //inicio de la secuencia
-    	  	 	 	   if(i==(CANT_LED-1))
+    	  	 	 	   if(incremento==(CANT_LED-1))
 
-    	  	 	 	   {    i=0;
+    	  	 	 	   {    incremento=0;
 
     	  	 	 	         }
 
     	  	 	 	   else{
-    	  	 	 	    	i++;
+    	  	 	 	    	incremento++;
 
     	  	 	 	    			  }
 
@@ -194,7 +193,7 @@ int main(void)
     	  	 	      }
 
     	  	 	 	 else{
-    	  	 	 	 			  writeLedOn_GPIO(LEDS[i]);
+    	  	 	 	 			  writeLedOn_GPIO(LEDS[incremento]);
     	  	 	 	 			  estado_led = true;
     	  	 	 	 		  }
 
@@ -252,6 +251,7 @@ int main(void)
     	          	      	estado_led1 = true;
     	          	      }
     	          	   }
+
 delayWrite(&timer_led2, vector_frecuencias[1]);
 
 if(delayRead(&timer_led2))
@@ -341,15 +341,15 @@ if(delayRead(&timer_led3))
     {
      if(estado_led)
       {
-       writeLedOff_GPIO(LEDS[i]);
+       writeLedOff_GPIO(LEDS[incremento]);
        //inicio de la secuencia
-       if(i==(CANT_LED-1))
-        { i=0;
+       if(incremento==(CANT_LED-1))
+        { incremento=0;
 
     	      }
 
     	   else{
-    	      	 i++;
+    	      	 incremento++;
 
     	      	  	 }
 
@@ -359,7 +359,7 @@ if(delayRead(&timer_led3))
     	      	  	  }
 
     	      	   else{
-    	      	  	 	 writeLedOn_GPIO(LEDS[i]);
+    	      	  	 	 writeLedOn_GPIO(LEDS[incremento]);
     	      	  	      estado_led = true;
     	      	  	 	 	 		  }
 

@@ -122,7 +122,7 @@ uint16_t LEDS[CANT_LED] = {LED1,LED2,LED3};
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   //variable usada como contador
-  int8_t i=0;
+  int8_t incremento=0;
   while (1)
   {
      if(delayRead(&timer_inicio))
@@ -130,16 +130,18 @@ uint16_t LEDS[CANT_LED] = {LED1,LED2,LED3};
 	 if(estado_led)
 
 	 {
-	   writeLedoff_GPIO(LEDS[i]);
-	    //inicio de la secuencia
-	   if(i==0)
+	   writeLedoff_GPIO(LEDS[incremento]);
 
-	   {    i=(CANT_LED-1);
+	    //inicio de la secuencia
+
+	   if(incremento==0)
+
+	   {    incremento=(CANT_LED-1);
 
 	         }
 
 	   else{
-	    	i--;
+		   incremento--;
 
 	    			  }
 
@@ -149,7 +151,7 @@ uint16_t LEDS[CANT_LED] = {LED1,LED2,LED3};
      }
 
 	 else{
-	 			  writeLedon_GPIO(LEDS[i]);
+	 			  writeLedon_GPIO(LEDS[incremento]);
 	 			  estado_led = true;
 	 		  }
 
