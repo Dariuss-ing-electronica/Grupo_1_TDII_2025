@@ -5,19 +5,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Drivers/API/Src/API_DEBOUNCE.c \
 ../Drivers/API/Src/API_Delay.c \
-../Drivers/API/Src/API_GPIO.c \
-../Drivers/API/Src/API_debounce.c 
+../Drivers/API/Src/API_GPIO.c 
 
 OBJS += \
+./Drivers/API/Src/API_DEBOUNCE.o \
 ./Drivers/API/Src/API_Delay.o \
-./Drivers/API/Src/API_GPIO.o \
-./Drivers/API/Src/API_debounce.o 
+./Drivers/API/Src/API_GPIO.o 
 
 C_DEPS += \
+./Drivers/API/Src/API_DEBOUNCE.d \
 ./Drivers/API/Src/API_Delay.d \
-./Drivers/API/Src/API_GPIO.d \
-./Drivers/API/Src/API_debounce.d 
+./Drivers/API/Src/API_GPIO.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -27,7 +27,7 @@ Drivers/API/Src/%.o Drivers/API/Src/%.su Drivers/API/Src/%.cyclo: ../Drivers/API
 clean: clean-Drivers-2f-API-2f-Src
 
 clean-Drivers-2f-API-2f-Src:
-	-$(RM) ./Drivers/API/Src/API_Delay.cyclo ./Drivers/API/Src/API_Delay.d ./Drivers/API/Src/API_Delay.o ./Drivers/API/Src/API_Delay.su ./Drivers/API/Src/API_GPIO.cyclo ./Drivers/API/Src/API_GPIO.d ./Drivers/API/Src/API_GPIO.o ./Drivers/API/Src/API_GPIO.su ./Drivers/API/Src/API_debounce.cyclo ./Drivers/API/Src/API_debounce.d ./Drivers/API/Src/API_debounce.o ./Drivers/API/Src/API_debounce.su
+	-$(RM) ./Drivers/API/Src/API_DEBOUNCE.cyclo ./Drivers/API/Src/API_DEBOUNCE.d ./Drivers/API/Src/API_DEBOUNCE.o ./Drivers/API/Src/API_DEBOUNCE.su ./Drivers/API/Src/API_Delay.cyclo ./Drivers/API/Src/API_Delay.d ./Drivers/API/Src/API_Delay.o ./Drivers/API/Src/API_Delay.su ./Drivers/API/Src/API_GPIO.cyclo ./Drivers/API/Src/API_GPIO.d ./Drivers/API/Src/API_GPIO.o ./Drivers/API/Src/API_GPIO.su
 
 .PHONY: clean-Drivers-2f-API-2f-Src
 
