@@ -1,0 +1,4 @@
+../Drivers/API/Src/Driver_GPIO.c:8:6:Actuador_Inicializar	2
+../Drivers/API/Src/Driver_GPIO.c:20:6:Actuador_On	2
+../Drivers/API/Src/Driver_GPIO.c:27:6:Actuador_Off	2
+../Drivers/API/Src/Driver_GPIO.c:34:6:Actuador_Toggle	3

@@ -1,0 +1,2 @@
+../Drivers/API/Src/Driver_SHT30.c:12:6:SHT30_Inicializar	24	static
+../Drivers/API/Src/Driver_SHT30.c:21:6:SHT30_Leer	32	static

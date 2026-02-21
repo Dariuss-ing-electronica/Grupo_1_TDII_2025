@@ -1,0 +1,3 @@
+../Drivers/API/Src/Driver_SensorSuelo.c:19:6:SensorHumedad_Inicializar	1
+../Drivers/API/Src/Driver_SensorSuelo.c:30:10:SensorHumedad_LeerValorMedido	2
+../Drivers/API/Src/Driver_SensorSuelo.c:42:9:SensorHumedad_LeerPorcentaje	4

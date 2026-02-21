@@ -1,0 +1,7 @@
+../Drivers/API/Src/Driver_LCD.c:20:13:LCD_SendInternal	2
+../Drivers/API/Src/Driver_LCD.c:41:13:LCD_Cmd	1
+../Drivers/API/Src/Driver_LCD.c:50:13:LCD_Data	1
+../Drivers/API/Src/Driver_LCD.c:62:6:LCD_Inicializar	3
+../Drivers/API/Src/Driver_LCD.c:97:6:LCD_EnviarCadena	2
+../Drivers/API/Src/Driver_LCD.c:110:6:LCD_Apuntar	2
+../Drivers/API/Src/Driver_LCD.c:121:6:LCD_Limpiar	2

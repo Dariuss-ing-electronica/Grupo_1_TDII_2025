@@ -1,0 +1,8 @@
+../Drivers/API/Src/Infraestructura.c:26:6:Infra_I2C_Write	24	static
+../Drivers/API/Src/Infraestructura.c:38:6:Infra_I2C_Read	24	static
+../Drivers/API/Src/Infraestructura.c:51:6:Infra_UART_Write	16	static
+../Drivers/API/Src/Infraestructura.c:62:6:Infra_UART_Read	16	static
+../Drivers/API/Src/Infraestructura.c:77:10:Infra_ADC_Read	16	static
+../Drivers/API/Src/Infraestructura.c:87:6:Infra_GPIO_Write	24	static
+../Drivers/API/Src/Infraestructura.c:100:6:Infra_Delay	16	static
+../Drivers/API/Src/Infraestructura.c:109:10:Infra_GetTick	8	static

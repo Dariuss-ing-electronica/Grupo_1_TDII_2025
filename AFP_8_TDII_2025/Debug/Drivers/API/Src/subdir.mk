@@ -1,0 +1,45 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+# Toolchain: GNU Tools for STM32 (13.3.rel1)
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../Drivers/API/Src/Driver_Bluetooth.c \
+../Drivers/API/Src/Driver_Delay.c \
+../Drivers/API/Src/Driver_GPIO.c \
+../Drivers/API/Src/Driver_LCD.c \
+../Drivers/API/Src/Driver_SHT30.c \
+../Drivers/API/Src/Driver_SensorSuelo.c \
+../Drivers/API/Src/Infraestructura.c 
+
+OBJS += \
+./Drivers/API/Src/Driver_Bluetooth.o \
+./Drivers/API/Src/Driver_Delay.o \
+./Drivers/API/Src/Driver_GPIO.o \
+./Drivers/API/Src/Driver_LCD.o \
+./Drivers/API/Src/Driver_SHT30.o \
+./Drivers/API/Src/Driver_SensorSuelo.o \
+./Drivers/API/Src/Infraestructura.o 
+
+C_DEPS += \
+./Drivers/API/Src/Driver_Bluetooth.d \
+./Drivers/API/Src/Driver_Delay.d \
+./Drivers/API/Src/Driver_GPIO.d \
+./Drivers/API/Src/Driver_LCD.d \
+./Drivers/API/Src/Driver_SHT30.d \
+./Drivers/API/Src/Driver_SensorSuelo.d \
+./Drivers/API/Src/Infraestructura.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+Drivers/API/Src/%.o Drivers/API/Src/%.su Drivers/API/Src/%.cyclo: ../Drivers/API/Src/%.c Drivers/API/Src/subdir.mk
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I"C:/Users/KING/Downloads/Bluetooth/Drivers/API/Inc" -I"C:/Users/KING/Downloads/Bluetooth/Drivers/API/Src" -I"C:/Users/KING/Downloads/Bluetooth/Core/Inc" -I"C:/Users/KING/Downloads/Bluetooth/Core/Src" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+
+clean: clean-Drivers-2f-API-2f-Src
+
+clean-Drivers-2f-API-2f-Src:
+	-$(RM) ./Drivers/API/Src/Driver_Bluetooth.cyclo ./Drivers/API/Src/Driver_Bluetooth.d ./Drivers/API/Src/Driver_Bluetooth.o ./Drivers/API/Src/Driver_Bluetooth.su ./Drivers/API/Src/Driver_Delay.cyclo ./Drivers/API/Src/Driver_Delay.d ./Drivers/API/Src/Driver_Delay.o ./Drivers/API/Src/Driver_Delay.su ./Drivers/API/Src/Driver_GPIO.cyclo ./Drivers/API/Src/Driver_GPIO.d ./Drivers/API/Src/Driver_GPIO.o ./Drivers/API/Src/Driver_GPIO.su ./Drivers/API/Src/Driver_LCD.cyclo ./Drivers/API/Src/Driver_LCD.d ./Drivers/API/Src/Driver_LCD.o ./Drivers/API/Src/Driver_LCD.su ./Drivers/API/Src/Driver_SHT30.cyclo ./Drivers/API/Src/Driver_SHT30.d ./Drivers/API/Src/Driver_SHT30.o ./Drivers/API/Src/Driver_SHT30.su ./Drivers/API/Src/Driver_SensorSuelo.cyclo ./Drivers/API/Src/Driver_SensorSuelo.d ./Drivers/API/Src/Driver_SensorSuelo.o ./Drivers/API/Src/Driver_SensorSuelo.su ./Drivers/API/Src/Infraestructura.cyclo ./Drivers/API/Src/Infraestructura.d ./Drivers/API/Src/Infraestructura.o ./Drivers/API/Src/Infraestructura.su
+
+.PHONY: clean-Drivers-2f-API-2f-Src
+
